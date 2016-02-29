@@ -1,0 +1,49 @@
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    font-family: Open Sans;
+    color: #9ca4ab;
+    background: #edf0f5;
+    -webkit-font-smoothing: antialiased;
+}
+
+@font-face {
+    font-family: 'face';
+    src: url('../fonts/notifr-facepack.eot');
+    src: url('../fonts/notifr-facepack.svg') format('svg');
+    src: url('../fonts/notifr-facepack.ttf') format('truetype');
+    src: url('../fonts/notifr-facepack.woff') format('woff');
+}
+
+.title {
+    background-color: #55acee;
+    height: 160px;
+}
+
+p.text {
+    color: white;
+    font-size: 24px;
+    font-weight: 100;
+    text-align: center
+}
+
+.notifr-logo {
+    height: 80px;
+    margin: auto;
+    width: 60px;
+    padding-top: 8px;
+}
+
+.notifr-logo .notifr-login-svg path {
+    fill: #55acee;
+}
+
+.notifr-login-logo .notifr-svg path {
+    fill: #55acee;
+}
+
+.notifr-logo .logo-svg path {
+    fill: #55acee;
+}
