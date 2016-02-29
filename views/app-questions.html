@@ -20,9 +20,10 @@
     <p class="text">Question Prioritisation Matrix</p>
 </header>
 <div class="container">
-    <div class="sub-container" ng-repeat="question in qpmData.questions">
+    <div class="sub-container" ng-repeat="question in qpmSessions">
+        {{qpmData.sessions}}
         <div class="box" style="background-color: #edf0f5">
-            <div style="text-align:center;">Session {{$index +1}}<span style="float:right;margin-right:10px;color:#55acee;" ng-click="removeSession($index)"><i class="fa fa-close fa-x"></i></span></div>
+            <div style="text-align:center;">Session {{$index +1}}</div>
             <div style="text-align:center;padding:10px;color:#55acee;">{{question.name}}</div>
             <div style="text-align:center;color:#55acee;">
                 {{question.details}}

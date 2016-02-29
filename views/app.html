@@ -25,12 +25,12 @@
             <div style="text-align:center;">Session {{$index +1}}<span style="float:right;margin-right:10px;color:#55acee;" ng-click="removeSession($index)"><i class="fa fa-close fa-x"></i></span></div>
             <form name="sessionInfoForm">
                 <div style="text-align:center;padding:10px;">
-                    <input type="text" ng-model="name" name="sessionName" placeholder="enter session name" style="width: 200px;
+                    <input type="text" ng-model="question.name" name="sessionName" placeholder="enter session name" style="width: 200px;
     padding: 10px;
     text-align: center;" />
                 </div>
                 <div style="text-align:center;">
-                    <textarea name="sessionInfo" ng-model="details"></textarea>
+                    <textarea name="sessionInfo" ng-model="question.details"></textarea>
                 </div>
             </form>
         </div>

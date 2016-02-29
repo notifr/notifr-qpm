@@ -12,44 +12,53 @@ var notifrApp = angular.module('notifrApp', ['ui.router'])
             .state('qpm', {
                 url: '/qpm',
                 templateUrl: 'views/app-questions.html',
-                controller: 'appController'
+                controller: 'qpmController'
             })
         $urlRouterProvider.otherwise('/app');
-
     }]);
 
-notifrApp.controller('appController', ['$scope', '$stateParams', '$state', function ($scope, $stateParams, $state) {
+notifrApp.factory('sessions', function () {
+    var qpm = {};
+    qpm.sessions = [];
+
+    qpm.addSessionInfo = function (sessions) {
+        sessions.map(function (session) {
+            qpm.sessions.push(session);
+        });
+    }
+    qpm.getSessionInfo = function () {
+        return qpm.sessions;
+    }
+    return qpm;
+
+});
+notifrApp.controller('appController', ['$scope', '$stateParams', '$state', 'sessions', function ($scope, $stateParams, $state, sessions) {
     $scope.qpmData = {};
     $scope.qpmData.sessions = [{}];
 
-    $scope.addNewSession = function (index) {
+    $scope.addNewSession = function () {
+        //        $scope.qpmData.sessions[index].name = name;
+        //        $scope.qpmData.sessions[index].details = details;
+        console.log($scope.qpmData.sessions);
         var newSession = $scope.qpmData.sessions.length + 1;
         $scope.qpmData.sessions.push({});
         console.log($scope.qpmData);
     }
 
     $scope.removeSession = function (index) {
-        var lastItem = $scope.qpmData.sessions.length - 1;
+        var lastSession = $scope.qpmData.sessions.length - 1;
         $scope.qpmData.sessions.splice(index, 1);
     };
 
     $scope.submitInfo = function () {
+        sessions.addSessionInfo($scope.qpmData.sessions);
         $state.go('qpm');
         console.log($scope.qpmData);
     }
 }]);
 
-notifrApp.filter('split', function () {
-    return function (input, splitChar, splitIndex) {
-        // do some bounds checking here to ensure it has that index
-        return input.split(splitChar)[splitIndex];
-    }
-});
+notifrApp.controller('qpmController', ['$scope', '$stateParams', '$state', 'sessions', function ($scope, $stateParams, $state, sessions) {
 
-notifrApp.filter('randomize', function () {
-    return function (input, scope) {
-        if (input != null && input != undefined && input > 1) {
-            return 'avatar' + (Math.floor((Math.random() * input) + 1));
-        }
-    }
-});
+    $scope.qpmSessions = sessions.getSessionInfo()
+
+}]);
