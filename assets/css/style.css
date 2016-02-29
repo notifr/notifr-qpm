@@ -50,6 +50,8 @@ p.texts {
 
 div.container {
     padding: 10px;
+    clear: both;
+    overflow: auto;
 }
 
 div.container .sub-container {
@@ -155,7 +157,7 @@ div.primary-button {
 }
 
 
-/***** Print Style sheets ***/
+/****** Print stylesheets ***/
 
 @media print {
     .title {
