@@ -22,12 +22,10 @@
 <div class="container">
     <div class="sub-container" ng-repeat="question in qpmData.sessions">
         <div class="box" style="background-color: #edf0f5">
-            <div style="text-align:center;">Session {{$index +1}}<span style="float:right;margin-right:10px;color:#55acee;" ng-click="removeSession($index)"><i class="fa fa-close fa-x"></i></span></div>
+            <div style="text-align:center;">Session {{$index +1}}<span class="close-button" ng-click="removeSession($index)"><i class="fa fa-close fa-x"></i></span></div>
             <form name="sessionInfoForm">
-                <div style="text-align:center;padding:10px;">
-                    <input type="text" ng-model="question.name" name="sessionName" placeholder="enter session name" style="width: 200px;
-    padding: 10px;
-    text-align: center;" />
+                <div class="session-name">
+                    <input type="text" ng-model="question.name" name="sessionName" placeholder="enter session name" class="name-input" />
                 </div>
                 <div style="text-align:center;">
                     <textarea name="sessionInfo" ng-model="question.details"></textarea>
@@ -36,6 +34,9 @@
         </div>
         <div class="box" style="background-color:#9ca4ab">
             <div style="text-align:center;">Recommended Questions</div>
+            <div>
+
+            </div>
         </div>
     </div>
     <div class="new-session" ng-click="addNewSession(name,details,$index)">
