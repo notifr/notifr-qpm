@@ -47,3 +47,19 @@ p.text {
 .notifr-logo .logo-svg path {
     fill: #55acee;
 }
+
+div.container {
+    padding: 10px;
+}
+
+div.container. sub-container {
+    height: auto;
+    width: 33%;
+    float: left;
+    border: 1px solid black;
+}
+
+div.sub-container .box {
+    height: 50%;
+    width: 100%;
+}
