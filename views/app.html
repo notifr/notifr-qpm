@@ -22,45 +22,48 @@
 <div class="container">
     <div class="sub-container" ng-repeat="session in qpmData.sessions">
         <div class="box" style="background-color:#ededed;">
-            <div style="text-align:center;">Session {{$index +1}}<span class="close-button" ng-click="removeSession($index)"><i class="fa fa-close fa-x"></i></span></div>
+            <div style="text-align:center;position:relative;">Session {{$index +1}}<span class="close-button" ng-click="removeSession($index)"><i class="fa fa-close fa-x"></i></span></div>
             <form name="sessionInfoForm">
                 <div class="session-name">
-                    <input type="text" ng-model="session.name" name="sessionName" placeholder="enter session name" class="name-input" />
+                    <input type="text" ng-model="session.name" name="sessionName" placeholder="Type your Title/Theme..." class="name-input" />
                 </div>
                 <div style="text-align:center;">
-                    <textarea name="sessionInfo" ng-model="session.details"></textarea>
+                    <textarea msd-elastic="\n" name="sessionInfo" placeholder="What are you trying to achieve with this session?                                              What needs to be measured?" ng-model="session.details" class="details-textarea"></textarea>
                 </div>
             </form>
         </div>
         <div class="box" style="background-color: #dadada;">
             <div style="text-align:center;">Recommended Questions</div>
-            <div ng-repeat="question in qpmData.questions">
-                <div style="text-align:center;">
-                    <input type="text" ng-model="question.question" />
-                    <span class="close-button" ng-click="removeQuestion($index)"><i class="fa fa-close fa-x"></i></span>
-                </div>
-                <div style="text-align:center;margin:10px 0px 10px 0px;">
+            <div ng-repeat="question in qpmData.questions" style="padding: 24px 0 0 0;display: inline-block;width: 100%;">
+                <div id="type-toggle" style="text-align: center;float: left;width: 50px;padding-left: 20px;">
                     <div ng-init="question.type = 'smile'" class="question-type" ng-class="question.type" ng-click="addType(question.type,$index)">
                     </div>
                 </div>
+                <div id="question-data" style="text-align: left;position: relative;float: left;width: calc(100% - 100px);padding-left: 30px;">
+                    <span class="close-button" ng-click="removeQuestion($index)"><i class="fa fa-close fa-x"></i></span>
+                    <textarea name="question" msd-elastic placeholder="Type a question here..." ng-model="question.question" class="details-textarea question-textarea"></textarea>
+                </div>
+                
             </div>
             <div style="text-align:center;">
                 <div class="add-button" ng-click="addNewQuestion()">
-                    <i style="color:white;" class="fa fa-plus"></i>
+                    <i class="fa fa-plus"></i> Add Question
                 </div>
-                <div style="color:white ">ADD QUESTION</div>
             </div>
         </div>
     </div>
-    <div class=" new-session " ng-click="addNewSession(name,details,$index) ">
-        <div>
-            <div class="add-button ">
-                <i class="fa fa-plus fa-lg "></i>
+    <div class="new-session">
+        <div style="padding-top:30px;">
+            <div class="primary-button" ng-click="addNewSession(name,details,$index) ">
+                <i class="fa fa-plus fa-lg "></i> Add Session
             </div>
-            <p style="color:#55acee; ">ADD BOX</p>
+            <div style="text-align:center;padding-top:20px;">
+                <div class="primary-button alt" ng-click="submitInfo() "><i class="fa fa-file fa-lg "></i> Print</div>
+            </div>
         </div>
     </div>
 </div>
+<!--
 <div style="text-align:center;">
     <div class="primary-button " ng-click="submitInfo() ">submit</div>
-</div>
+</div>-->

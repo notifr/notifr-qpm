@@ -65,22 +65,25 @@ div.container .sub-container {
 div.sub-container .box {
     height: 50%;
     width: 100%;
-    padding: 10px;
+    padding: 20px 10px;
 }
 
 .close-button {
-    float: right;
-    margin-right: 10px;
+    right: 10px;
     color: #55acee;
+    position: absolute;
+    cursor: pointer;
 }
 
 div.new-session {
-    border: 1px dashed;
+    border: #dadada 1px dashed;
     display: inline-block;
-    width: 297px;
+    width: 20%;
+    min-height: 200px;
     text-align: center;
     padding: 25px;
     margin: 20px;
+    cursor: pointer;
 }
 
 form div.session-name {
@@ -89,26 +92,56 @@ form div.session-name {
 }
 
 div.session-name .name-input {
-    width: 200px;
-    padding: 10px;
+    width: 100%;
     text-align: center;
+    border: 0;
+    color: #55acee;
+    background: none;
+    font: 600 16px/40px Open Sans, sans-serif;
+}
+
+div.session-name .name-input::-webkit-input-placeholder {
+    color: #55acee;
+}
+
+div .details-textarea {
+    width: 100%;
+    text-align: center;
+    background: none;
+    border: none;
+    font: 400 14px/24px Open Sans, sans-serif;
+}
+div .question-textarea.details-textarea {
+    text-align: left;
+}
+div .question-textarea.details-textarea::-webkit-input-placeholder {
+    color: rgba(136,136,136,1);
 }
 
 div.new-session .add-button {
     padding: 15px;
-    display: inline-block;
     color: white;
+    
     background-color: #55acee;
     border-radius: 5px;
+    
+}
+
+div .add-button {
+    cursor: pointer;
+    color: #888;
+    display: inline-block;
 }
 
 div.question-type {
     color: white;
-    padding: 5px;
-    display: inline-block;
-    color: white;
     background-color: #55acee;
     border-radius: 5px;
+    width: 50px;
+    font-size: 26px;
+    height: 50px;
+    line-height: 48px;
+    cursor: pointer;
 }
 
 .smile:before {
@@ -142,6 +175,10 @@ div.primary-button {
     transition: all .2s ease-in-out;
 }
 
+div.primary-button.alt {
+    background-color: #dadada;
+    color: #888;
+}
 
 /***** Media Queries *****/
 

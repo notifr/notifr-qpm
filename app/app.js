@@ -1,4 +1,4 @@
-var notifrApp = angular.module('notifrApp', ['ui.router'])
+var notifrApp = angular.module('notifrApp', ['ui.router','monospaced.elastic'])
     .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
         $httpProvider.defaults.withCredentials = true;
