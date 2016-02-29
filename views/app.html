@@ -17,37 +17,50 @@
 
         </svg>
     </div>
-    <p class="text">Question Prioritisation Matrix</p>
+    <p class="texts">Question Prioritisation Matrix</p>
 </header>
 <div class="container">
-    <div class="sub-container" ng-repeat="question in qpmData.sessions">
-        <div class="box" style="background-color: #edf0f5">
+    <div class="sub-container" ng-repeat="session in qpmData.sessions">
+        <div class="box" style="background-color:#ededed;padding:10px;">
             <div style="text-align:center;">Session {{$index +1}}<span class="close-button" ng-click="removeSession($index)"><i class="fa fa-close fa-x"></i></span></div>
             <form name="sessionInfoForm">
                 <div class="session-name">
-                    <input type="text" ng-model="question.name" name="sessionName" placeholder="enter session name" class="name-input" />
+                    <input type="text" ng-model="session.name" name="sessionName" placeholder="enter session name" class="name-input" />
                 </div>
                 <div style="text-align:center;">
-                    <textarea name="sessionInfo" ng-model="question.details"></textarea>
+                    <textarea name="sessionInfo" ng-model="session.details"></textarea>
                 </div>
             </form>
         </div>
-        <div class="box" style="background-color:#9ca4ab">
+        <div class="box" style="background-color: #dadada;padding:10px;">
             <div style="text-align:center;">Recommended Questions</div>
-            <div>
-
+            <div ng-repeat="question in qpmData.questions">
+                <div style="text-align:center;">
+                    <input type="text" ng-model="question.question" />
+                    <span class="close-button" ng-click="removeQuestion($index)"><i class="fa fa-close fa-x"></i></span>
+                </div>
+                <div style="text-align:center;margin:10px 0px 10px 0px;">
+                    <div ng-init="question.type = 'smile'" class="question-type" ng-class="question.type" ng-click="addType(question.type,$index)">
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:center;">
+                <div class="add-button" ng-click="addNewQuestion()">
+                    <i style="color:white;" class="fa fa-plus"></i>
+                </div>
+                <div style="color:white ">ADD QUESTION</div>
             </div>
         </div>
     </div>
-    <div class="new-session" ng-click="addNewSession(name,details,$index)">
+    <div class=" new-session " ng-click="addNewSession(name,details,$index) ">
         <div>
-            <div class="add-button">
-                <i class="fa fa-plus fa-lg"></i>
+            <div class="add-button ">
+                <i class="fa fa-plus fa-lg "></i>
             </div>
+            <p style="color:#55acee; ">ADD BOX</p>
         </div>
-        <p style="color:#55acee;">ADD QUESTION</p>
     </div>
 </div>
 <footer>
-    <div class="primary-button" ng-click="submitInfo()">submit</div>
+    <div class="primary-button " ng-click="submitInfo() ">submit</div>
 </footer>

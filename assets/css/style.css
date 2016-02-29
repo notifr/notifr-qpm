@@ -17,12 +17,17 @@ body {
     src: url('../fonts/notifr-facepack.woff') format('woff');
 }
 
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('./fonts/font-awesome.min.css');
+}
+
 .title {
     background-color: #55acee;
     height: 160px;
 }
 
-p.text {
+p.texts {
     color: white;
     font-size: 24px;
     font-weight: 100;
@@ -96,6 +101,25 @@ div.new-session .add-button {
     color: white;
     background-color: #55acee;
     border-radius: 5px;
+}
+
+div.question-type {
+    color: white;
+    padding: 5px;
+    display: inline-block;
+    color: white;
+    background-color: #55acee;
+    border-radius: 5px;
+}
+
+.smile:before {
+    content: "\f118";
+    font-family: FontAwesome;
+}
+
+.text:before {
+    content: "\f27a";
+    font-family: FontAwesome;
 }
 
 footer {

@@ -20,45 +20,63 @@ var notifrApp = angular.module('notifrApp', ['ui.router'])
 notifrApp.factory('sessions', function () {
     var qpm = {};
     qpm.sessions = [];
-
-    qpm.addSessionInfo = function (sessions) {
+    qpm.questions = [];
+    qpm.addSessionInfo = function (sessions, questions) {
         sessions.map(function (session) {
             qpm.sessions.push(session);
+        });
+        questions.map(function (question) {
+            qpm.questions.push(question);
         });
     }
     qpm.getSessionInfo = function () {
         return qpm.sessions;
     }
+    qpm.getQuestionInfo = function () {
+        return qpm.questions;
+    }
     return qpm;
 
 });
 notifrApp.controller('appController', ['$scope', '$stateParams', '$state', 'sessions', function ($scope, $stateParams, $state, sessions) {
+    $scope.slider = true;
+    $scope.comment = false;
     $scope.qpmData = {};
     $scope.qpmData.sessions = [{}];
-
+    $scope.qpmData.questions = [{}];
     $scope.addNewSession = function () {
-        //        $scope.qpmData.sessions[index].name = name;
-        //        $scope.qpmData.sessions[index].details = details;
-        console.log($scope.qpmData.sessions);
         var newSession = $scope.qpmData.sessions.length + 1;
         $scope.qpmData.sessions.push({});
         console.log($scope.qpmData);
     }
-
     $scope.removeSession = function (index) {
         var lastSession = $scope.qpmData.sessions.length - 1;
         $scope.qpmData.sessions.splice(index, 1);
     };
+    $scope.removeQuestion = function (index) {
+        var lastSession = $scope.qpmData.questions.length - 1;
+        $scope.qpmData.questions.splice(index, 1);
+    };
+    $scope.addNewQuestion = function () {
+        var newQuestion = $scope.qpmData.questions.length + 1;
+        $scope.qpmData.questions.push({});
+    }
+    $scope.addType = function (type, index) {
+        if (type == 'smile')
+            $scope.qpmData.questions[index].type = 'text';
+        else if (type == 'text')
+            $scope.qpmData.questions[index].type = 'smile';
+    }
 
     $scope.submitInfo = function () {
-        sessions.addSessionInfo($scope.qpmData.sessions);
+        sessions.addSessionInfo($scope.qpmData.sessions, $scope.qpmData.questions);
         $state.go('qpm');
-        console.log($scope.qpmData);
     }
 }]);
 
 notifrApp.controller('qpmController', ['$scope', '$stateParams', '$state', 'sessions', function ($scope, $stateParams, $state, sessions) {
 
     $scope.qpmSessions = sessions.getSessionInfo()
+    $scope.qpmQuestions = sessions.getQuestionInfo();
 
 }]);
