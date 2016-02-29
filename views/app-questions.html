@@ -22,14 +22,14 @@
 <div class="container">
     <div class="sub-container" ng-repeat="question in qpmSessions">
         {{qpmData.sessions}}
-        <div class="box" style="background-color:#ededed;padding:10px;">
+        <div class="box" style="background-color:#ededed;">
             <div style="text-align:center;">Session {{$index +1}}</div>
             <div style="text-align:center;padding:10px;color:#55acee;">{{question.name}}</div>
             <div style="text-align:center;color:#55acee;">
                 {{question.details}}
             </div>
         </div>
-        <div class="box" style="background-color: #dadada;padding:10px;">
+        <div class="box" style="background-color: #dadada;">
             <div style="text-align:center;">Recommended Questions</div>
             <div ng-repeat="question in qpmQuestions">
                 <div style="text-align:center;">

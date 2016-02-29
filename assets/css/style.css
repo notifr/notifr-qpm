@@ -17,11 +17,6 @@ body {
     src: url('../fonts/notifr-facepack.woff') format('woff');
 }
 
-@font-face {
-    font-family: 'FontAwesome';
-    src: url('./fonts/font-awesome.min.css');
-}
-
 .title {
     background-color: #55acee;
     height: 160px;
@@ -62,11 +57,13 @@ div.container .sub-container {
     width: 30%;
     float: left;
     padding: 10px;
+    margin: 10px;
 }
 
 div.sub-container .box {
     height: 50%;
     width: 100%;
+    padding: 10px;
 }
 
 .close-button {
@@ -141,4 +138,28 @@ div.primary-button {
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
+}
+
+
+/***** Media Queries *****/
+
+@media screen and (max-width:768px) {
+    div.container .sub-container {
+        width: 100%;
+        padding: 10px 0px;
+        margin: 0px;
+    }
+    div.sub-container .box {
+        padding: 10px 0px;
+    }
+}
+
+
+/***** Print Style sheets ***/
+
+@media print {
+    .title {
+        background-color: #55acee;
+        height: 160px;
+    }
 }
