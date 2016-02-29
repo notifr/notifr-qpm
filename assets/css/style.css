@@ -26,14 +26,16 @@ p.texts {
     color: white;
     font-size: 24px;
     font-weight: 100;
-    text-align: center
+    text-align: center;
+    padding: 0 0 20px;
+    margin: 0;
 }
 
 .notifr-logo {
     height: 80px;
     margin: auto;
     width: 60px;
-    padding-top: 8px;
+    padding: 20px 0 0 0;
 }
 
 .notifr-logo .notifr-login-svg path {
@@ -187,6 +189,11 @@ div.primary-button.alt {
         width: 100%;
         padding: 10px 0px;
         margin: 0px;
+    }
+    div.container .new-session {
+        width:100%;
+        padding: 0;
+        margin: 0;
     }
     div.sub-container .box {
         padding: 10px 0px;
