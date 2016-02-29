@@ -4,8 +4,8 @@ body {
     padding: 0px;
     width: 100%;
     font-family: Open Sans;
-    color: #9ca4ab;
-    background: #edf0f5;
+    /*    color: #9ca4ab;*/
+    /*    background: #edf0f5;*/
     -webkit-font-smoothing: antialiased;
 }
 
@@ -52,14 +52,52 @@ div.container {
     padding: 10px;
 }
 
-div.container. sub-container {
+div.container .sub-container {
     height: auto;
-    width: 33%;
+    width: 30%;
     float: left;
-    border: 1px solid black;
+    padding: 10px;
 }
 
 div.sub-container .box {
     height: 50%;
     width: 100%;
+}
+
+div.new-session {
+    border: 1px dashed;
+    display: inline-block;
+    width: 297px;
+    text-align: center;
+    padding: 25px;
+    margin: 10px 0px 0px 10px;
+}
+
+div.new-session .add-button {
+    padding: 15px;
+    display: inline-block;
+    color: white;
+    background-color: #55acee;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+}
+
+div.primary-button {
+    padding: 14px 30px;
+    cursor: pointer;
+    background-color: #55acee;
+    border-radius: 5px;
+    font-family: open sans;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+    text-transform: capitalize;
+    text-transform: uppercase;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
 }

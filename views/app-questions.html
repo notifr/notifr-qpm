@@ -20,33 +20,16 @@
     <p class="text">Question Prioritisation Matrix</p>
 </header>
 <div class="container">
-    <div class="sub-container" ng-repeat="question in qpmData.sessions">
+    <div class="sub-container" ng-repeat="question in qpmData.questions">
         <div class="box" style="background-color: #edf0f5">
             <div style="text-align:center;">Session {{$index +1}}<span style="float:right;margin-right:10px;color:#55acee;" ng-click="removeSession($index)"><i class="fa fa-close fa-x"></i></span></div>
-            <form name="sessionInfoForm">
-                <div style="text-align:center;padding:10px;">
-                    <input type="text" ng-model="name" name="sessionName" placeholder="enter session name" style="width: 200px;
-    padding: 10px;
-    text-align: center;" />
-                </div>
-                <div style="text-align:center;">
-                    <textarea name="sessionInfo" ng-model="details"></textarea>
-                </div>
-            </form>
+            <div style="text-align:center;padding:10px;color:#55acee;">{{question.name}}</div>
+            <div style="text-align:center;color:#55acee;">
+                {{question.details}}
+            </div>
         </div>
         <div class="box" style="background-color:#9ca4ab">
             <div style="text-align:center;">Recommended Questions</div>
         </div>
     </div>
-    <div class="new-session" ng-click="addNewSession(name,details,$index)">
-        <div>
-            <div class="add-button">
-                <i class="fa fa-plus fa-lg"></i>
-            </div>
-        </div>
-        <p style="color:#55acee;">ADD QUESTION</p>
-    </div>
 </div>
-<footer>
-    <div class="primary-button" ng-click="submitInfo()">submit</div>
-</footer>

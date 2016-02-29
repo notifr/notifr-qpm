@@ -5,19 +5,38 @@ var notifrApp = angular.module('notifrApp', ['ui.router'])
         $stateProvider
 
             .state('app', {
-            url: '/app',
-            templateUrl: 'views/app.html',
-            controller: 'appController'
-        })
-
+                url: '/app',
+                templateUrl: 'views/app.html',
+                controller: 'appController'
+            })
+            .state('qpm', {
+                url: '/qpm',
+                templateUrl: 'views/app-questions.html',
+                controller: 'appController'
+            })
         $urlRouterProvider.otherwise('/app');
 
     }]);
 
 notifrApp.controller('appController', ['$scope', '$stateParams', '$state', function ($scope, $stateParams, $state) {
-    console.log("Hello");
+    $scope.qpmData = {};
+    $scope.qpmData.sessions = [{}];
 
+    $scope.addNewSession = function (index) {
+        var newSession = $scope.qpmData.sessions.length + 1;
+        $scope.qpmData.sessions.push({});
+        console.log($scope.qpmData);
+    }
 
+    $scope.removeSession = function (index) {
+        var lastItem = $scope.qpmData.sessions.length - 1;
+        $scope.qpmData.sessions.splice(index, 1);
+    };
+
+    $scope.submitInfo = function () {
+        $state.go('qpm');
+        console.log($scope.qpmData);
+    }
 }]);
 
 notifrApp.filter('split', function () {
