@@ -21,19 +21,13 @@ notifrApp.factory('sessions', function () {
     var qpm = {};
     qpm.sessions = [];
     qpm.questions = [];
-    qpm.addSessionInfo = function (sessions, questions) {
+    qpm.addSessionInfo = function (sessions) {
         sessions.map(function (session) {
             qpm.sessions.push(session);
-        });
-        questions.map(function (question) {
-            qpm.questions.push(question);
         });
     }
     qpm.getSessionInfo = function () {
         return qpm.sessions;
-    }
-    qpm.getQuestionInfo = function () {
-        return qpm.questions;
     }
     return qpm;
 
@@ -43,35 +37,36 @@ notifrApp.controller('appController', ['$scope', '$stateParams', '$state', 'sess
     $scope.comment = false;
     $scope.qpmData = {};
     $scope.qpmData.sessions = [{}];
-    $scope.qpmData.questions = [{}];
+    $scope.qpmData.sessions[0].questions = [{}];
     $scope.sessions = {};
     $scope.questions = {};
     $scope.addNewSession = function () {
-        var newSession = $scope.sessions.length + 1;
+        var newSession = $scope.qpmData.sessions.length;
         $scope.qpmData.sessions.push({});
+        $scope.qpmData.sessions[newSession].questions = [{}];
         console.log($scope.qpmData);
     }
     $scope.removeSession = function (index) {
         var lastSession = $scope.sessions.length - 1;
         $scope.qpmData.sessions.splice(index, 1);
     };
-    $scope.removeQuestion = function (index) {
+    $scope.removeQuestion = function (parent, index) {
         var lastSession = $scope.questions.length - 1;
-        $scope.qpmData.questions.splice(index, 1);
+        $scope.qpmData.sessions[parent].questions.splice(index, 1);
     };
-    $scope.addNewQuestion = function () {
+    $scope.addNewQuestion = function (parent) {
         var newQuestion = $scope.questions.length + 1;
-        $scope.qpmData.questions.push({});
+        $scope.qpmData.sessions[parent].questions.push({});
     }
-    $scope.addType = function (type, index) {
+    $scope.addType = function (type, index, parent) {
         if (type == 'smile')
-            $scope.qpmData.questions[index].type = 'text';
+            $scope.qpmData.sessions[parent].questions[index].type = 'text';
         else if (type == 'text')
-            $scope.qpmData.questions[index].type = 'smile';
+            $scope.qpmData.sessions[parent].questions[index].type = 'smile';
     }
 
     $scope.submitInfo = function () {
-        sessions.addSessionInfo($scope.qpmData.sessions, $scope.qpmData.questions);
+        sessions.addSessionInfo($scope.qpmData.sessions);
         $state.go('qpm');
     }
 }]);
@@ -79,10 +74,9 @@ notifrApp.controller('appController', ['$scope', '$stateParams', '$state', 'sess
 notifrApp.controller('qpmController', ['$scope', '$stateParams', '$state', 'sessions', function ($scope, $stateParams, $state, sessions) {
 
     $scope.qpmSessions = sessions.getSessionInfo()
-    $scope.qpmQuestions = sessions.getQuestionInfo();
+    console.log($scope.qpmSessions);
 
 }]);
-
 notifrApp.directive('bullet', function () {
     return {
         require: 'ngModel',
