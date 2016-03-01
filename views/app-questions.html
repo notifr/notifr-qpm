@@ -21,9 +21,8 @@
 </header>
 <div class="container">
     <div class="sub-container" ng-repeat="question in qpmSessions">
-        {{qpmData.sessions}}
         <div class="box" style="background-color:#ededed;">
-            <div style="text-align:center;">Session {{$index +1}}</div>
+            <div style="text-align:center;position:relative;">Session {{$index +1}}</div>
             <div style="text-align:center;padding:10px;color:#55acee;">{{question.name}}</div>
             <div style="text-align:center;color:#55acee;">
                 {{question.details}}
@@ -31,9 +30,20 @@
         </div>
         <div class="box" style="background-color: #dadada;">
             <div style="text-align:center;">Recommended Questions</div>
-            <div ng-repeat="question in question.questions">
-                <div style="text-align:center;">
-                    <div class="question-type" style="display:inline-block;" ng-class="question.type"></div>
+            <div ng-repeat="question in question.questions" style="padding: 24px 0 0 0;
+    display: inline-block;
+    width: 100%;">
+                <div id="type-toggle" style="text-align:center;text-align: center;
+    float: left;
+    width: 50px;
+    padding-left: 20px;">
+                    <div class="question-type" style="display:inline-block;text-align: center;float: left;width: 50px;" ng-class="question.type"></div>
+                </div>
+                <div id="question-data" style="text-align: left;
+    position: relative;
+    float: left;
+    width: calc(100% - 100px);
+    padding-left: 30px;">
                     <div style="display:inline-block;">{{question.question}}</div>
                 </div>
             </div>
