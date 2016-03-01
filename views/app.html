@@ -20,7 +20,7 @@
     <p class="texts">Question Prioritisation Matrix</p>
 </header>
 <div class="container">
-    <div class="sub-container" ng-repeat="session in qpmData.sessions">
+    <div class="sub-container" ng-repeat="session in qpmData.sessions">{{qpmData.sessions}}
         <div class="box" style="background-color:#ededed;">
             <div style="text-align:center;position:relative;">Session {{$index +1}}<span class="close-button" ng-click="removeSession($index)"><i class="fa fa-close fa-x"></i></span></div>
             <form name="sessionInfoForm">
@@ -34,7 +34,7 @@
         </div>
         <div class="box" style="background-color: #dadada;">
             <div style="text-align:center;">Recommended Questions</div>
-            <div ng-repeat="question in qpmData.questions" style="padding: 24px 0 0 0;display: inline-block;width: 100%;">
+            <div ng-repeat="question in qpmData.questions" style="padding: 24px 0 0 0;display: inline-block;width: 100%;">{{qpmData.questions}}
                 <div id="type-toggle" style="text-align: center;float: left;width: 50px;padding-left: 20px;">
                     <div ng-init="question.type = 'smile'" class="question-type" ng-class="question.type" ng-click="addType(question.type,$index)">
                     </div>
@@ -43,7 +43,7 @@
                     <span class="close-button" ng-click="removeQuestion($index)"><i class="fa fa-close fa-x"></i></span>
                     <textarea name="question" msd-elastic placeholder="Type a question here..." ng-model="question.question" class="details-textarea question-textarea"></textarea>
                 </div>
-                
+
             </div>
             <div style="text-align:center;">
                 <div class="add-button" ng-click="addNewQuestion()">

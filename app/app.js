@@ -1,4 +1,4 @@
-var notifrApp = angular.module('notifrApp', ['ui.router','monospaced.elastic'])
+var notifrApp = angular.module('notifrApp', ['ui.router', 'monospaced.elastic'])
     .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
         $httpProvider.defaults.withCredentials = true;
@@ -44,21 +44,23 @@ notifrApp.controller('appController', ['$scope', '$stateParams', '$state', 'sess
     $scope.qpmData = {};
     $scope.qpmData.sessions = [{}];
     $scope.qpmData.questions = [{}];
+    $scope.sessions = {};
+    $scope.questions = {};
     $scope.addNewSession = function () {
-        var newSession = $scope.qpmData.sessions.length + 1;
+        var newSession = $scope.sessions.length + 1;
         $scope.qpmData.sessions.push({});
         console.log($scope.qpmData);
     }
     $scope.removeSession = function (index) {
-        var lastSession = $scope.qpmData.sessions.length - 1;
+        var lastSession = $scope.sessions.length - 1;
         $scope.qpmData.sessions.splice(index, 1);
     };
     $scope.removeQuestion = function (index) {
-        var lastSession = $scope.qpmData.questions.length - 1;
+        var lastSession = $scope.questions.length - 1;
         $scope.qpmData.questions.splice(index, 1);
     };
     $scope.addNewQuestion = function () {
-        var newQuestion = $scope.qpmData.questions.length + 1;
+        var newQuestion = $scope.questions.length + 1;
         $scope.qpmData.questions.push({});
     }
     $scope.addType = function (type, index) {
