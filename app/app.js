@@ -82,3 +82,66 @@ notifrApp.controller('qpmController', ['$scope', '$stateParams', '$state', 'sess
     $scope.qpmQuestions = sessions.getQuestionInfo();
 
 }]);
+
+notifrApp.directive('bullet', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attrs, modelCtrl) {
+            var capitalize = function (inputValue) {
+                if (inputValue == undefined) inputValue = '';
+                var capitalized = inputValue;
+                var res = capitalized.charAt(0);
+
+//                if (res !== "•") {
+//                    capitalized = "• " + capitalized;
+//                    modelCtrl.$setViewValue(capitalized);
+//                    modelCtrl.$render();
+                
+////                } if (res !== '\n' && capitalized !== inputValue) {
+//////                    capitalized = "\n sam " + capitalized;
+////                    capitalized.replace(/[\r\n]+/g, '\n •');
+////                    modelCtrl.$setViewValue(capitalized);
+////                    modelCtrl.$render();
+//                }else {
+//                    return capitalized;
+//                }
+//                
+                
+                
+                element.bind("mousedown keydown keypress", function (event) {
+                    if (event.which === 13) {
+                        capitalized += "\n • ";
+                        modelCtrl.$setViewValue(capitalized);
+                        modelCtrl.$render();
+
+                        event.preventDefault();
+                    }
+//                    if (event.which === 1) {
+//                            capitalized += "• ";
+//                            modelCtrl.$setViewValue(capitalized);
+//                            modelCtrl.$render();
+//
+//                        event.preventDefault();
+//                    }
+//                    if(res !== "•") {
+//                        capitalized += "• ";
+//                        modelCtrl.$setViewValue(capitalized);
+//                        modelCtrl.$render();
+//                    }
+                });
+//                var keycode = (event.keyCode ? event.keyCode : event.which);
+//                if(keycode == '13'){
+//                    document.getElementById('todolist').value +='• ';
+//                }
+//                var txtval = document.getElementById('todolist').value;
+//                if(txtval.substr(txtval.length - 1) == '\n'){
+//                    document.getElementById('todolist').value = txtval.substring(0,txtval.length - 1);
+//                
+                
+                
+            }
+            modelCtrl.$parsers.push(capitalize);
+            capitalize(scope[attrs.ngModel]); // capitalize initial value
+        }
+    };
+});
