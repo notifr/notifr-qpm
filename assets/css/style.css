@@ -206,8 +206,8 @@ div.primary-button.alt {
 
 @media print {
     body {
-        column-count: 3;
-        column-gap: 2em;
+        column-count: 2;
+        column-gap: 1em;
         column-rule: thin solid black;
     }
     .title {
@@ -218,6 +218,8 @@ div.primary-button.alt {
     }
     div.container .sub-container {
         -webkit-print-color-adjust: exact !important;
+        width: 45%;
+        margin: 0px 5px;
     }
     div.sub-container .box {
         -webkit-print-color-adjust: exact !important;
